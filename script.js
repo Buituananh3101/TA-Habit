@@ -1,34 +1,94 @@
-// --- Dữ liệu câu hỏi & Ảnh ---
+// --- Dữ liệu 15 câu hỏi ---
 const questions = [
     {
-        q: "Tuấn Anh thích màu gì?",
-        img: "images/a1.png", // Bạn nhớ kiểm tra lại đường dẫn ảnh này nhé
-        options: ["Xanh nước biển", "Nâu", "Xám"],
-        correct: "all" // Câu 1: Chọn gì cũng đúng
+        q: "Kem nào bị Tuấn Anh ăn nhiều nhất?",
+        img: "images/q1.png", 
+        options: ["Kem Vani", "Kem Socola", "Kem Dâu"], 
+        correct: 0 
     },
     {
-        q: "Quả gì hay bị Tuấn Anh ăn nhất?",
-        img: "images/a2.png",
-        options: ["Xoài", "Cam", "Măng cụt"],
-        correct: "all" // Câu 2: Chọn gì cũng đúng
+        q: "Loài động vật mà Tuấn Anh thích nhất?",
+        img: "images/q2.png",
+        options: ["Muỗi", "Mèo", "Cá voi"],
+        correct: 2
     },
     {
-        q: "Tuấn Anh cao bao nhiêu?",
-        img: "images/a3.png",
+        q: "Nếu bạn lì xì Tuấn Anh 200k Tuấn Anh sẽ làm gì?",
+        img: "images/q3.png",
+        options: ["Tiết kiệm", "Mua quần áo mới", "Tuấn Anh sẽ quý bạn nhất"],
+        correct: 2
+    },
+    {
+        q: "Thời gian yêu thích trong năm của Tuấn Anh là gì?",
+        img: "images/q4.png",
+        options: ["Mùa Xuân", "Mùa Hè", "Mùa Đông"],
+        correct: 0
+    },
+    {
+        q: "Nếu bạn cho Tuấn Anh chọn: bánh, kẹo, bimbim thì Tuấn Anh sẽ lấy gì?",
+        img: "images/q5.png",
+        options: ["Bánh", "Kẹo", "Bim bim"],
+        correct: 2
+    },
+    {
+        q: "Tuấn Anh sống ở đâu?",
+        img: "images/q6.png",
+        options: ["Trong lòng tôi", "Hải Phòng", "Hà Nội"],
+        correct: 0
+    },
+    {
+        q: "Tuấn Anh thích vị gì nhất",
+        img: "images/q7.png",
+        options: ["Cay", "Chua", "Ngọt"],
+        correct: 0
+    },
+    {
+        q: "Loại thời tiết mà Tuấn Anh thích là gì?",
+        img: "images/q8.png",
+        options: ["Nắng nhẹ", "Mưa rào", "Se lạnh"],
+        correct: 0
+    },
+    {
+        q: "Tuấn Anh cao bao nhiêu",
+        img: "images/q9.png",
         options: ["1m36", "1m72", "Cao nhất trong lòng tôi"],
-        correct: 2 // Câu 3: Chỉ đáp án thứ 3 (index 2) là đúng
+        correct: 1
     },
     {
-        q: "Tuấn Anh thích đồ ăn vị gì?",
-        img: "images/a4.png",
-        options: ["Cay", "Ngọt", "Chua"],
-        correct: "all" // Câu 4: Chọn gì cũng đúng
+        q: "Tuấn Anh thích màu gì?",
+        img: "images/q10.png",
+        options: ["Xanh nước biển", "Xám", "Nâu"],
+        correct: 1
     },
     {
-        q: "Nếu bạn cho Tuấn Anh chọn: bánh, kẹo, bim bim thì Tuấn Anh lấy gì?",
-        img: "images/a5.png",
-        options: ["Bánh", "Kẹo", "Sữa"],
-        correct: "all" // Câu 5: Chọn gì cũng đúng
+        q: "Quả gì bị Tuấn Anh ăn nhiều nhất?",
+        img: "images/q11.png",
+        options: ["Xoài", "Cam", "Măng cụt"],
+        correct: 0
+    },
+    {
+        q: "Tuấn Anh thích đi du lịch nơi nào?",
+        img: "images/q12.png",
+        options: ["Phòng ngủ", "Lớp học", "Thượng Hải"],
+        correct: 2
+    },
+    {
+        q: "Điều gì quan trọng nhất đối với Tuấn Anh?",
+        img: "images/q13.png",
+        options: ["Mì phải trộn", "Mì phải xào", "Mì nước"],
+        correct: 0
+    },
+    {
+        q: "Thức uống Tuấn Anh uống nhiều nhất?",
+        img: "images/q14.png",
+        options: ["Trà sữa", "Cà phê", "Nước lọc"],
+        correct: 2
+    },
+    {
+        q: "Tuấn Anh sẽ làm gì nếu trúng số độc đắc?",
+        img: "images/q15.png",
+        options: ["Mua nhà", "Mua siêu xe", "Tỉnh dậy"],
+        correct: 1
     }
 ];
 
@@ -36,8 +96,8 @@ const questions = [
 let currentQuestion = 0;
 let score = 0;
 
-// --- DANH SÁCH HỆ SỐ MỚI ---
-const multipliers = [ 0.26, 2.6, 26, 260, 0.26, 2.6, 26, 2026, 0.26, 2.6, 26]; 
+// --- DANH SÁCH HỆ SỐ ---
+const multipliers = [0.26, 2.6, 26, 260, 0.26, 2.6, 26, 2026, 0.26, 2.6, 26]; 
 
 // --- Hàm tiện ích ---
 function showScreen(id) {
@@ -61,7 +121,6 @@ function loadQuestion() {
     document.getElementById('question-number').innerText = `Câu hỏi ${currentQuestion + 1}/${questions.length}`;
     
     const imgElement = document.getElementById('question-img');
-    // Kiểm tra xem ảnh có tồn tại không để tránh lỗi
     if(q.img) imgElement.src = q.img;
 
     document.getElementById('question-text').innerText = q.q;
@@ -73,19 +132,14 @@ function loadQuestion() {
         const btn = document.createElement('button');
         btn.className = 'option-btn';
         btn.innerText = opt;
-        // Truyền index vào hàm kiểm tra
         btn.onclick = () => checkAnswer(index);
         container.appendChild(btn);
     });
 }
 
-// --- CẬP NHẬT LOGIC CHECK ĐÁP ÁN ---
+// --- Logic Check Đáp Án ---
 function checkAnswer(selectedIndex) {
-    const q = questions[currentQuestion];
-    
-    // Logic mới:
-    // Nếu correct là "all" (chọn gì cũng đúng) HOẶC index chọn trùng với đáp án đúng
-    if (q.correct === "all" || selectedIndex === q.correct) {
+    if (selectedIndex === questions[currentQuestion].correct) {
         score++;
     }
     
@@ -93,7 +147,7 @@ function checkAnswer(selectedIndex) {
     if (currentQuestion < questions.length) {
         loadQuestion();
     } else {
-        prepareRolling(); // Chuyển sang màn hình quay số
+        prepareRolling(); 
     }
 }
 
@@ -111,18 +165,15 @@ function startRolling() {
     spinBtn.innerText = "Đang quay...";
     display.classList.add('rolling');
 
-    // Tạo hiệu ứng nhảy số liên tục
     const interval = setInterval(() => {
         const randomVal = multipliers[Math.floor(Math.random() * multipliers.length)];
         display.innerText = "x" + randomVal;
     }, 50);
 
-    // Sau 3 giây thì dừng lại
     setTimeout(() => {
         clearInterval(interval);
         display.classList.remove('rolling');
         
-        // Chốt kết quả cuối cùng
         const finalMultiplier = multipliers[Math.floor(Math.random() * multipliers.length)];
         display.innerText = "x" + finalMultiplier;
         
@@ -133,56 +184,71 @@ function startRolling() {
     }, 3000);
 }
 
-// --- Logic Kết quả ---
+// --- Logic Kết quả (ĐÃ SỬA THEO TỔNG ĐIỂM) ---
 function showResult(multiplier) {
-    // Tính điểm (làm tròn 2 chữ số thập phân)
+    // 1. Tính tổng điểm trước
     const finalScore = parseFloat((score * multiplier).toFixed(2)); 
     document.getElementById('final-score').innerText = finalScore;
     
     let msg = "";
-    if(multiplier < 1) msg = "Phải gỡ, làm hơn 10 điểm có bất ngờ!";
-    else if(multiplier > 2 && multiplier <5) msg = "Phải gỡ, Làm hơn 100 điểm có bất ngờ!";
-    else if(multiplier > 5 && multiplier <2000) msg = "Phải gỡ, Làm hơn 1000 điểm bạn sẽ hiểu!";
-    else if(multiplier*2025 < 1000) msg = "Phải gỡ, Làm hơn 10000 điểm bạn sẽ hiểu!";
-    else if(multiplier*2025 > 1000) msg = "Phải gỡ, Làm hơn 100000 điểm bạn sẽ hiểu!";
-    else msg = "Lỗi rồi hay sao ấy";
 
-    document.getElementById('msg-result').innerText = `Trả lời đúng: ${score} câu.\nHệ số may mắn: x${multiplier}.\n${msg}`;
+    // 2. So sánh biến finalScore (Tổng điểm) thay vì multiplier (Hệ số)
+    
+    if (finalScore < 10) { 
+        // Ví dụ: Trả lời ít câu x hệ số thấp -> Điểm < 10
+        msg = "Phải gỡ, làm hơn 10 điểm có bất ngờ!";
+    } 
+    else if (finalScore < 100) { 
+        // 10 -> 99 điểm
+        msg = "Phải gỡ, Làm hơn 100 điểm có bất ngờ!";
+    } 
+    else if (finalScore < 1000) { 
+        // 100 -> 999 điểm
+        msg = "Phải gỡ, Làm hơn 1.000 điểm có bất ngờ!";
+    } 
+    else if (finalScore < 10000) { 
+        // 1.000 -> 9.999 điểm
+        msg = "Phải gỡ, Làm hơn 10.000 điểm có bất ngờ!";
+    } 
+    else if (finalScore < 100000) { 
+        // 1.000 -> 9.999 điểm
+        msg = "Phải gỡ, Làm hơn 100.000 điểm có bất ngờ!";
+    } 
+    else { 
+        // Điểm trên 10.000 (Ví dụ trúng x2026)
+        msg = "Phải gỡ, Làm hơn 1.000.000 điểm có bất ngờ!";
+    }
+
+    document.getElementById('msg-result').innerText = `Trả lời đúng: ${score}/${questions.length} câu.\nHệ số may mắn: x${multiplier}.\n${msg}`;
     
     showScreen('result-screen');
 }
 
-// --- LOGIC ĐỔI VỊ TRÍ NÚT (Troll Game) ---
+// --- Logic Troll ---
 function swapButtons() {
     const yesBtn = document.getElementById('btn-yes');
     const noBtn = document.getElementById('btn-no');
     
-    // Kiểm tra xem nút có tồn tại không để tránh lỗi
     if (!yesBtn || !noBtn) return;
 
     const parent = yesBtn.parentElement; 
 
-    // Kiểm tra vị trí hiện tại
     if (yesBtn.nextElementSibling === noBtn) {
-        // [YES] [NO] -> [NO] [YES]
         parent.insertBefore(noBtn, yesBtn);
     } else {
-        // [NO] [YES] -> [YES] [NO]
         parent.insertBefore(yesBtn, noBtn);
     }
 }
 
-// --- LOGIC GỬI TIN NHẮN MESSENGER (Nếu bạn đã thêm nút này ở bước trước) ---
+// --- Logic Messenger ---
 function sendToMessenger() {
     const finalScore = document.getElementById('final-score').innerText;
     const message = `Hellu Tuấn Anh, tớ vừa chơi game của cậu và được ${finalScore} điểm nè!`;
 
     navigator.clipboard.writeText(message).then(() => {
         alert("Đã copy điểm số! Bạn hãy DÁN (Paste) vào ô chat nhé.");
-        // Thay link m.me bằng username của bạn
         window.open('https://m.me/USERNAME_FACEBOOK_CUA_BAN', '_blank');
     }).catch(err => {
-        // Fallback
         window.open('https://m.me/USERNAME_FACEBOOK_CUA_BAN', '_blank');
     });
 }
