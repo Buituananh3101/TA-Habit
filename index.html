@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Game Trắc Nghiệm & Quay Số</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container" id="app">
+        <div id="welcome-screen" class="fade-in">
+            <h1>Tuấn Anh xin chào!!!</h1>
+            <p>Bạn muốn biết gì về Tuấn Anh không</p>
+            
+            <div class="button-group">
+                <button id="btn-yes" class="btn" onclick="startQuiz()">Có có có</button>
+                
+                <button id="btn-no" class="btn" onclick="swapButtons()">No no no</button>
+            </div>
+        </div>
+
+        <div id="quiz-screen" class="hidden fade-in">
+            <h2 id="question-number">Câu hỏi 1/5</h2>
+            
+            <div class="img-container">
+                <img id="question-img" src="" alt="Hình minh họa">
+            </div>
+
+            <p id="question-text">Nội dung câu hỏi ở đây...</p>
+            
+            <div id="options-container">
+                </div>
+        </div>
+
+        <div id="wheel-screen" class="hidden fade-in">
+            <h2>Quay Số May Mắn</h2>
+            <p>Hệ số tính điểm</p>
+            <p>Số câu đúng của bạn: <span id="base-score" style="font-weight:bold; color:var(--primary)"></span></p>
+            
+            <div class="slot-machine-container">
+                <div id="multiplier-display">x1.0</div>
+            </div>
+            
+            <button class="btn" id="spin-btn" onclick="startRolling()" style="margin-top: 30px;">Quay Ngay!</button>
+        </div>
+
+        <div id="result-screen" class="hidden fade-in">
+            <h1>Tổng Kết</h1>
+            <p>Chúc mừng bạn đã hoàn thành!</p>
+            <h2>Điểm số: <span id="final-score">0</span></h2>
+            <p id="msg-result"></p>
+            <img src="https://images.unsplash.com/photo-1533743983669-94fa5c4338ec?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Victory" class="result-img">
+            <br>
+            <button class="btn" onclick="location.reload()">Chơi lại</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

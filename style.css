@@ -1,0 +1,211 @@
+/* --- BẢNG MÀU TẾT --- */
+:root {
+    /* Màu chủ đạo: Đỏ tươi (Màu của may mắn, lì xì) */
+    --primary: #E74C3C; 
+    
+    /* Màu phụ: Vàng ánh kim (Màu của hoa mai, tài lộc) - dùng cho viền, hover */
+    --secondary: #F1C40F; 
+    
+    /* Màu nền khung chứa: Kem nhạt (Ấm áp hơn màu xám cũ) */
+    --bg: #FFFBF0; 
+    
+    /* Màu trắng giữ nguyên */
+    --white: #ffffff; 
+    
+    /* Màu chữ: Nâu đỏ đậm (Dễ đọc trên nền sáng nhưng vẫn ấm) */
+    --text: #5D4037; 
+    
+    /* Màu nhấn: Cam sáng (Dùng khi số đang quay) */
+    --accent: #FF9F43; 
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+
+body {
+    /* Cấu trúc: linear-gradient(lớp phủ tối), url(link-ảnh)
+       - rgba(0, 0, 0, 0.6): Màu đen mờ 60% để làm tối ảnh đi.
+    */
+    background: 
+        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url(images/troidem.jpg); 
+    
+    /* Đảm bảo ảnh luôn bao phủ toàn màn hình */
+    background-size: cover;
+    
+    /* Căn ảnh vào giữa */
+    background-position: center;
+    
+    /* Cố định ảnh nền khi cuộn trang (tạo cảm giác chuyên nghiệp) */
+    background-attachment: fixed;
+    
+    /* Không lặp lại ảnh */
+    background-repeat: no-repeat;
+
+    /* Các thuộc tính căn giữa nội dung giữ nguyên */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    background: var(--bg);
+    width: 100%;
+    max-width: 500px;
+    padding: 35px; /* Tăng padding một chút cho thoáng */
+    
+    /* Bo góc tròn hơn một chút */
+    border-radius: 25px;
+    
+    /* --- THAY ĐỔI LỚN Ở ĐÂY ĐỂ TẠO ĐỘ NỔI --- */
+    
+    /* 1. Viền vàng dày hơn để tạo khung rõ nét */
+    border: 4px solid var(--secondary);
+    
+    /* 2. Đổ bóng kép (Double Layer Shadow) tạo chiều sâu 3D mạnh mẽ: */
+    /* - Lớp inset: Tạo vệt sáng trắng nhẹ ở mép trên cùng, cảm giác ánh sáng chiếu vào */
+    /* - Lớp ngoài: Bóng màu đỏ đậm, lan rộng và xa hơn để nâng khối hộp lên */
+    box-shadow: 
+        inset 0 4px 6px rgba(255, 255, 255, 0.8), /* Vệt sáng cạnh trên */
+        0 30px 70px -20px rgba(121, 0, 0, 0.7);    /* Bóng đổ sâu màu đỏ tối */
+
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Tiêu đề màu Đỏ chủ đạo */
+h1, h2 { color: var(--primary); margin-bottom: 15px; }
+p { color: var(--text); font-size: 1.1rem; margin-bottom: 15px; line-height: 1.6; }
+
+/* Styles cho ảnh câu hỏi */
+.img-container {
+    width: 100%;
+    height: 180px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #FFE0B2; /* Nền ảnh chờ màu cam nhạt */
+    border: 2px solid var(--secondary); /* Viền vàng cho ảnh */
+}
+
+#question-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Nút bấm chung - Màu Đỏ */
+.btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+    margin-top: 10px;
+    font-weight: bold;
+    box-shadow: 0 4px 0 #c0392b; /* Tạo hiệu ứng nút nổi 3D nhẹ */
+}
+
+/* Hover nút: Đổi sang đỏ đậm hơn */
+.btn:hover { background: #C0392B; transform: translateY(-2px); }
+.btn:disabled { background: #EF9A9A; cursor: not-allowed; box-shadow: none; }
+
+/* Quiz Styles */
+.option-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    /* Nền nút đáp án: Màu vàng kem nhạt */
+    background: #FFF3E0;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    text-align: left;
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--text);
+    transition: 0.3s;
+}
+
+/* Hover đáp án: Hiện viền Vàng kim */
+.option-btn:hover { background: #FFE0B2; border-color: var(--secondary); }
+
+/* --- STYLE MỚI CHO QUAY SỐ (SLOT MACHINE) --- */
+.slot-machine-container {
+    margin: 20px auto;
+    width: 320px;
+    height: 180px;
+    /* Nền khung quay số: Vàng nhạt */
+    background: #FFF8E1;
+    /* Viền nét đứt màu Đỏ */
+    border: 4px dashed var(--primary);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 0 20px rgba(255, 0, 0, 0.1);
+}
+
+#multiplier-display {
+    font-size: 4rem;
+    font-weight: 800;
+    color: var(--primary); /* Số màu đỏ */
+    text-shadow: 2px 2px 0px rgba(241, 196, 15, 0.5); /* Bóng chữ màu vàng */
+}
+
+/* Hiệu ứng khi đang quay số */
+.rolling {
+    animation: pulse 0.1s infinite;
+    color: var(--accent) !important; /* Đổi sang màu Cam vàng khi quay */
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Result Image */
+.result-img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-top: 15px;
+    border: 3px solid var(--secondary); /* Viền vàng cho ảnh kết quả */
+    box-shadow: 0 5px 15px rgba(192, 57, 43, 0.2);
+}
+
+.hidden { display: none !important; }
+.fade-in { animation: fadeIn 0.5s ease-in; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ... (Code cũ giữ nguyên) ... */
+
+/* THÊM VÀO CUỐI FILE STYLE.CSS */
+.button-group {
+    display: flex;
+    justify-content: center; /* Căn giữa */
+    gap: 20px; /* Khoảng cách giữa 2 nút */
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Đảm bảo nút không bị dính margin thừa khi nằm trong group */
+.button-group .btn {
+    margin-top: 0;
+    min-width: 120px; /* Độ rộng tối thiểu cho nút đẹp hơn */
+}
