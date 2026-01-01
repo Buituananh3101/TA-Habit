@@ -209,3 +209,46 @@ p { color: var(--text); font-size: 1.1rem; margin-bottom: 15px; line-height: 1.6
     margin-top: 0;
     min-width: 120px; /* Độ rộng tối thiểu cho nút đẹp hơn */
 }
+
+/* --- THÊM VÀO CUỐI FILE style.css --- */
+
+/* --- Thay thế đoạn .option-btn.correct cũ bằng đoạn này --- */
+
+.option-btn.correct {
+    /* Dùng Gradient: Xanh biển từ đậm sang nhạt nhìn sẽ bóng bẩy hơn */
+    background: linear-gradient(45deg, #2193b0, #6dd5ed) !important; 
+    
+    color: #fff !important;
+   
+    
+    /* Thêm viền trắng mỏng để làm nổi bật màu xanh trên nền tối */
+    border: 2px solid #fff !important; 
+    
+    /* Hiệu ứng phát sáng nhẹ màu xanh */
+    box-shadow: 0 0 15px rgba(109, 213, 237, 0.6); 
+    
+    transform: scale(1.02); /* Phóng to nhẹ một chút khi đúng */
+    /* transition: all 0.3s ease; */
+}
+
+/* Trạng thái khi chọn SAI - Màu Cam */
+.option-btn.wrong {
+    background-color: #e67e22 !important; /* Cam */
+    color: #fff !important;
+    border-color: #d35400 !important;
+    animation: shake 0.3s; /* Hiệu ứng rung nhẹ khi sai */
+}
+
+/* Khóa nút để không bấm liên tục được */
+.option-btn.disabled {
+    pointer-events: none; /* Không cho click nữa */
+}
+
+/* Hiệu ứng rung khi chọn sai (cho sinh động) */
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    50% { transform: translateX(10px); }
+    75% { transform: translateX(-10px); }
+    100% { transform: translateX(0); }
+}

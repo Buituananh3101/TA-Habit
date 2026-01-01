@@ -31,10 +31,10 @@ const questions = [
         correct: 2
     },
     {
-        q: "Tuấn Anh sống ở đâu?",
+        q: "Tuấn Anh đang sống ở đâu?",
         img: "images/q6.png",
-        options: ["Trong lòng tôi", "Hải Phòng", "Hà Nội"],
-        correct: 0
+        options: ["Hồ Chí Minh", "Hải Phòng", "Hà Nội"],
+        correct: 2
     },
     {
         q: "Tuấn Anh thích vị gì nhất",
@@ -51,7 +51,7 @@ const questions = [
     {
         q: "Tuấn Anh cao bao nhiêu",
         img: "images/q9.png",
-        options: ["1m36", "1m72", "Cao nhất trong lòng tôi"],
+        options: ["1m36", "1m72", "1m18"],
         correct: 1
     },
     {
@@ -88,7 +88,7 @@ const questions = [
         q: "Tuấn Anh sẽ làm gì nếu trúng số độc đắc?",
         img: "images/q15.png",
         options: ["Mua nhà", "Mua siêu xe", "Tỉnh dậy"],
-        correct: 1
+        correct: 2
     }
 ];
 
@@ -138,17 +138,40 @@ function loadQuestion() {
 }
 
 // --- Logic Check Đáp Án ---
+// --- Thay thế hàm checkAnswer cũ bằng hàm này ---
+
 function checkAnswer(selectedIndex) {
-    if (selectedIndex === questions[currentQuestion].correct) {
+    // 1. Lấy tất cả các nút đáp án
+    const buttons = document.querySelectorAll('.option-btn');
+    const correctIndex = questions[currentQuestion].correct;
+
+    // 2. Khóa tất cả các nút để tránh click nhiều lần
+    buttons.forEach(btn => btn.classList.add('disabled'));
+
+    // 3. Xử lý Logic màu sắc
+    if (selectedIndex === correctIndex) {
+        // TRƯỜNG HỢP ĐÚNG:
         score++;
+        // Thêm class 'correct' (Xanh biển) cho nút vừa chọn
+        buttons[selectedIndex].classList.add('correct'); 
+    } else {
+        // TRƯỜNG HỢP SAI:
+        // Thêm class 'wrong' (Cam) cho nút vừa chọn
+        buttons[selectedIndex].classList.add('wrong');
+        
+        // Đồng thời hiện đáp án đúng (Xanh biển) để người chơi biết
+        buttons[correctIndex].classList.add('correct'); 
     }
     
-    currentQuestion++;
-    if (currentQuestion < questions.length) {
-        loadQuestion();
-    } else {
-        prepareRolling(); 
-    }
+    // 4. Đợi 1.5 giây rồi mới chuyển câu hỏi (để người chơi kịp nhìn màu)
+    setTimeout(() => {
+        currentQuestion++;
+        if (currentQuestion < questions.length) {
+            loadQuestion();
+        } else {
+            prepareRolling(); 
+        }
+    }, 1500); // 1500ms = 1.5 giây
 }
 
 // --- Logic Quay Số ---
