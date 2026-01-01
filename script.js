@@ -37,7 +37,7 @@ let currentQuestion = 0;
 let score = 0;
 
 // --- DANH SÁCH HỆ SỐ MỚI ---
-const multipliers = [ 0.26, 2.6, 26, 260, 2026]; 
+const multipliers = [ 0.26, 2.6, 26, 260, 0.26, 2.6, 26, 2026, 0.26, 2.6, 26]; 
 
 // --- Hàm tiện ích ---
 function showScreen(id) {
